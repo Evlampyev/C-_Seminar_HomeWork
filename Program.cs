@@ -150,7 +150,6 @@ ________________________________________________________________________________
 Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
 A (3,6,8); B (2,1,-7), -> 15.84
 A (7,-5, 0); B (1,-1,9) -> 11.53
-*/
 
 double Distanse (double x1, double y1, double z1, double x2, double y2, double z2)
 {
@@ -174,4 +173,28 @@ Console.WriteLine("Input z2 ");
 double Zz2 = Convert.ToDouble(Console.ReadLine());
 
 Console.WriteLine($"Distanse is {Math.Round(Distanse(Xx1, Yy1, Zz1, Xx2, Yy2, Zz2),2)}");
+
+______________________________________________________________________________________
+Задача 23
+Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+3 -> 1, 8, 27
+5 -> 1, 8, 27, 64, 125
+
+void Cubes (int num)
+{
+    int count = 1;
+    Console.Write(num + " -> ");
+    while (count <= num)
+    {
+        Console.Write(Math.Pow(count,3) + " ");
+        count ++;
+    }
+    return;
+}
+
+Console.WriteLine("Input Number ");
+int number = Convert.ToInt32(Console.ReadLine());
+Cubes(number);
+
+*/
 
