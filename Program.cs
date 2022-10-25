@@ -39,6 +39,8 @@ if (num % 2 == 0)
 else
     Console.WriteLine("НЕТ");
 
+__________________________________________________________________________________
+
 Задача №8
 
 
@@ -54,7 +56,8 @@ while (current <= N)
     Console.Write(current + " ");
     current += 2;
 }
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+__________________________________________________________________________________
 Задача №10
 
 int SecondDig(int num)
@@ -66,7 +69,7 @@ int SecondDig(int num)
 int number = new Random().Next(100,1000);
 int SecondDigit = SecondDig(number);
 Console.WriteLine ($"Second digit of {number} is {SecondDigit}");
-
+__________________________________________________________________________________
 Задача №13
 
 int ThirdDig(int num)
@@ -89,7 +92,7 @@ if (result == -1)
 else
     Console.WriteLine($"The third figure is {result}");
 
-
+__________________________________________________________________________________
     Задача №15
 
 string DayWeek (int Day)
@@ -100,17 +103,17 @@ string DayWeek (int Day)
             return "No";
     }
 
-
 Console.Write("Input Day of week ");
 int den = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine(DayWeek(den));
- */
- 
- /* Задача 19
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ _________________________________________________________________________________
+  Задача 19
 Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
 14212 -> нет
 12821 -> да
-23432 -> да */
+23432 -> да 
 
 void polydrome(int num)
 {
@@ -141,4 +144,34 @@ void polydrome(int num)
 Console.WriteLine("enter a five-digit number ");
 int number = Convert.ToInt32(Console.ReadLine());
 polydrome(number);
+
+______________________________________________________________________________________
+Задача №21
+Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
+A (3,6,8); B (2,1,-7), -> 15.84
+A (7,-5, 0); B (1,-1,9) -> 11.53
+*/
+
+double Distanse (double x1, double y1, double z1, double x2, double y2, double z2)
+{
+    double first = Math.Pow((x1-x2),2);
+    double second = Math.Pow((y1-y2),2);
+    double third = Math.Pow((z1-z2),2);
+    return Math.Sqrt(first + second + third);  
+}
+
+Console.WriteLine("Input x1 ");
+double Xx1 = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine("Input y1 ");
+double Yy1 = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine("Input z1 ");
+double Zz1 = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine("Input x2 ");
+double Xx2 = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine("Input y2 ");
+double Yy2 = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine("Input z2 ");
+double Zz2 = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine($"Distanse is {Math.Round(Distanse(Xx1, Yy1, Zz1, Xx2, Yy2, Zz2),2)}");
 
