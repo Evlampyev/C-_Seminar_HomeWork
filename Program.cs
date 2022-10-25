@@ -106,3 +106,39 @@ int den = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine(DayWeek(den));
  */
  
+ /* Задача 19
+Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+14212 -> нет
+12821 -> да
+23432 -> да */
+
+void polydrome(int num)
+{
+    bool answer = true;
+    int AnotherNum = num;
+    int count = 0;
+    while (AnotherNum > 0)
+    {
+        AnotherNum = AnotherNum / 10;
+        count = count + 1;
+    }
+ 
+    int degree = (int)Math.Pow(10, count-1);
+    while (answer && num > 9)
+    {
+        int first = num / degree;
+        int last = num % 10;
+        if (first != last)
+            {answer = false;}
+        num = num - first*degree;
+        num = num / 10;
+        degree = degree / 100;
+    }
+    Console.WriteLine(answer);
+    return;
+}
+
+Console.WriteLine("enter a five-digit number ");
+int number = Convert.ToInt32(Console.ReadLine());
+polydrome(number);
+
