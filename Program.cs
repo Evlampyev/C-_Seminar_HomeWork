@@ -223,7 +223,7 @@ ________________________________________________________________________________
 452 -> 11
 82 -> 10
 9012 -> 12
-*/
+
 
 int SumOfDigits (int num)
 {
@@ -238,5 +238,38 @@ int SumOfDigits (int num)
 
 Console.Write("Input number ");
 int number = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine($"the sum of the digits of the number {number} = {SumOfDigits(number)}");
+Console.WriteLine($"The sum of the digits of the number {number} = {SumOfDigits(number)}");
 
+
+______________________________________________________________________________________
+Задача 29: Напишите программу, которая задаёт массив из m элементов и выводит их на экран.
+1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
+6, 1, 33 -> [6, 1, 33]
+*/
+
+int[] InputArray (int size)
+{
+    int[] inputArray = new int [size];
+    for (int i = 0; i < size; i++)
+    {
+        Console.Write($"{i} element = ");
+        inputArray[i] = Convert.ToInt32(Console.ReadLine());
+    }
+    return inputArray;
+
+}
+
+void PrintArray(int [] massiv)
+{
+    Console.Write("Еhe entire array: ");
+    for (int i = 0; i<massiv.Length; i++)
+    {
+        Console.Write(massiv[i] + " ");
+    }
+}
+
+Console.Write("Enter the size of the array ");
+int arraySize = Convert.ToInt32(Console.ReadLine());
+
+int[] mainArray = InputArray(arraySize);
+PrintArray(mainArray);
