@@ -225,3 +225,18 @@ ________________________________________________________________________________
 9012 -> 12
 */
 
+int SumOfDigits (int num)
+{
+    int result = 0;
+    while (num > 0)
+        {
+            result += num % 10;
+            num = num / 10;
+        }
+    return result;
+}
+
+Console.Write("Input number ");
+int number = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"the sum of the digits of the number {number} = {SumOfDigits(number)}");
+
