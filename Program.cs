@@ -247,7 +247,7 @@ ________________________________________________________________________________
 6, 1, 33 -> [6, 1, 33]
 */
 
-int[] InputArray (int size)
+/* int[] InputArray (int size)
 {
     int[] inputArray = new int [size];
     for (int i = 0; i < size; i++)
@@ -272,4 +272,132 @@ Console.Write("Enter the size of the array ");
 int arraySize = Convert.ToInt32(Console.ReadLine());
 
 int[] mainArray = InputArray(arraySize);
-PrintArray(mainArray);
+PrintArray(mainArray); 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Семинар №5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+______________________________________________________________________________________
+
+Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, 
+которая покажет количество чётных чисел в массиве.
+[345, 897, 568, 234] -> 2 */
+
+int[] СreatRandomArray (int size, int minValue, int maxValue)
+{
+    int[] array = new int[size];
+    for (int i = 0; i < size; i++) 
+    {
+        array[i] = new Random().Next(minValue,maxValue);
+    }
+    return array;
+}
+
+void Print (int [] array)
+{
+    for (int i = 0; i< array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+}
+
+int SearchEvenNumbers (int [] array)
+{
+    int current = 0;
+    for (int i =0; i < array.Length; i++)
+    {
+        if (array[i] %2 == 0) 
+        {
+            current++;
+        }
+    }
+    return current;
+}
+
+Console.Write("Input size ");
+int s = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input LowLevel ");
+int LowLevel = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input HiLevel ");
+int HiLevel = Convert.ToInt32(Console.ReadLine());
+
+/* int[] MainArray = СreatRandomArray(s, LowLevel, HiLevel);
+Print (MainArray);
+Console.WriteLine ();
+Console.WriteLine("Even array elements " + SearchEvenNumbers(MainArray));
+
+______________________________________________________________________________________
+Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
+[3, 7, 23, 12] -> 19
+[-4, -6, 89, 6] -> 0  */
+
+int SearchEvenIndex (int [] array)
+{
+    int current = 0;
+    for (int i = 0; i < array.Length; i++)
+        if (i % 2 ==0) current ++;
+    return current;
+}
+
+int NotSearchEvenIndex (int [] array)
+{
+    return (array.Length / 2) + (array.Length % 2);
+}
+
+/*
+int[] MainArray = СreatRandomArray(s, LowLevel, HiLevel);
+Print (MainArray);
+Console.WriteLine ();
+
+Console.WriteLine ("Elements found in even places " + SearchEvenIndex(MainArray));
+Console.WriteLine ("Сalculated elements in even places " + NotSearchEvenIndex(MainArray));
+
+______________________________________________________________________________________
+ Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+[3 7 22 2 78] -> 76 */
+
+double[] CreatRandomDoubleArray (int size, int minValue, int maxValue)
+{
+    double[] array = new double[size];
+    for (int i = 0; i < size; i++)
+    {
+        array[i] = Math.Round((new Random().NextDouble() + new Random().Next(minValue, maxValue)), 4);
+    }
+    return array;
+}
+
+void PrintDouble (double[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+}
+
+double MaxElementArray (double [] array)
+{
+    double max = array[0];
+    for (int i = 1; i < array.Length; i++)
+    {
+        if (array[i] > max)
+            max = array[i];
+    }    
+return max;
+}
+
+double MinElementArray (double[] array)
+{
+    double min = array[0];
+    for (int i = 1; i < array.Length; i++)
+    {
+        if (array[i] < min)
+            min = array[i];
+    }    
+return min;
+}
+
+double[] MainArray = CreatRandomDoubleArray (s, LowLevel, HiLevel);
+PrintDouble (MainArray);
+Console.WriteLine ();
+double Max = MaxElementArray(MainArray);
+double Min =  MinElementArray(MainArray);
+double Max_Min =  Max - Min;
+Console.WriteLine($"The difference between the maximum({Max}) and minimum({Min}) element is {Max_Min}");
