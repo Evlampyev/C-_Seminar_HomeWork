@@ -327,7 +327,7 @@ Console.WriteLine("Even array elements " + SearchEvenNumbers(MainArray));
 ______________________________________________________________________________________
 Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
 [3, 7, 23, 12] -> 19
-[-4, -6, 89, 6] -> 0  */
+[-4, -6, 89, 6] -> 0  
 
 int SearchEvenIndex (int [] array)
 {
@@ -342,7 +342,7 @@ int NotSearchEvenIndex (int [] array)
     return (array.Length / 2) + (array.Length % 2);
 }
 
-/*
+
 int[] MainArray = СreatRandomArray(s, LowLevel, HiLevel);
 Print (MainArray);
 Console.WriteLine ();
