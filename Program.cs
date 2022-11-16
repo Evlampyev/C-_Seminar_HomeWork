@@ -312,12 +312,12 @@ int SearchEvenNumbers (int [] array)
     return current;
 }
 
-Console.Write("Input size ");
+/* Console.Write("Input size ");
 int s = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input LowLevel ");
 int LowLevel = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input HiLevel ");
-int HiLevel = Convert.ToInt32(Console.ReadLine());
+int HiLevel = Convert.ToInt32(Console.ReadLine()); */
 
 /* int[] MainArray = СreatRandomArray(s, LowLevel, HiLevel);
 Print (MainArray);
@@ -394,10 +394,36 @@ double MinElementArray (double[] array)
 return min;
 }
 
-double[] MainArray = CreatRandomDoubleArray (s, LowLevel, HiLevel);
+/* ouble[] MainArray = CreatRandomDoubleArray (s, LowLevel, HiLevel);
 PrintDouble (MainArray);
 Console.WriteLine ();
 double Max = MaxElementArray(MainArray);
 double Min =  MinElementArray(MainArray);
 double Max_Min =  Max - Min;
 Console.WriteLine($"The difference between the maximum({Max}) and minimum({Min}) element is {Max_Min}");
+ */
+
+/*  Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, 
+ сколько чисел больше 0 ввёл пользователь.
+0, 7, 8, -2, -2 -> 2
+1, -7, 567, 89, 223-> 3 */
+
+
+int HoWManyPositiveNumber (int k) //Количество положительных чисел из k вводимых с клавиатуры
+{
+    int current = 0;
+    Console.WriteLine($"Input {k} Numbers: ");
+    while (k > 0)
+    {
+        int num = Convert.ToInt32 (Console.ReadLine());
+        k--;
+        if (num > 0) 
+            current++;
+    }
+    return current;
+}
+
+Console.WriteLine("How much numbers ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"Positie number - {HoWManyPositiveNumber(m)}");
+
