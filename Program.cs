@@ -461,47 +461,68 @@ m = 3, n = 4.
 1 -3,3 8 -9,9
 8 7,8 -7,1 9
 */
-
-double [,] CreateRandomArray2d (int m, int n, int minValue, int maxValue) //заполнение массива mxn вещественными числами
+int[,] CreateRandomIntArray2d(int m, int n, int minValue, int maxValue) // Заполнение массива mxn целыми числами
 {
-    double [,] array2d = new double [m,n];
+    int[,] array2d = new int[m, n];
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
+            array2d[i, j] = new Random().Next(minValue, maxValue + 1);
+    return array2d;
+}
+
+double[,] CreateRandomArray2d(int m, int n, int minValue, int maxValue) //заполнение массива mxn вещественными числами
+{
+    double[,] array2d = new double[m, n];
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            double temp = (new Random().NextDouble()) + (new Random().Next(minValue,maxValue));
-            array2d[i,j] = Math.Round(temp,1);
+            double temp = (new Random().NextDouble()) + (new Random().Next(minValue, maxValue));
+            array2d[i, j] = Math.Round(temp, 1);
         }
     }
     return array2d;
 }
 
-void PrintArray2d (double [,] array2d) // Вывод на экран двумерного вещественного массива
+void PrintArray2d(double[,] array2d) // Вывод на экран двумерного вещественного массива
 {
-     for (int i = 0; i < array2d.GetLength(0); i++)
+    for (int i = 0; i < array2d.GetLength(0); i++)
     {
         for (int j = 0; j < array2d.GetLength(1); j++)
         {
-            Console.Write(array2d[i,j] + " ");
-        }   
-    Console.WriteLine();
+            Console.Write(array2d[i, j] + " ");
+        }
+        Console.WriteLine();
     }
 }
 
-void FormatPrintArray2d(double [,] array2d) //Форматный вывод на экран двумерного массива
+void FormatPrintDoubleArray2d(double[,] array2d) //Форматный вывод на экран двумерного вещественного массива
 {
     string s = string.Empty;
-     for (int i = 0; i < array2d.GetLength(0); i++)
+    for (int i = 0; i < array2d.GetLength(0); i++)
     {
         for (int j = 0; j < array2d.GetLength(1); j++)
         {
-            s += String.Format("{0,5}", array2d[i,j]);
-        }   
-    Console.WriteLine(s);
-    s = string.Empty;
+            s += String.Format("{0,5}", array2d[i, j]);
+        }
+        Console.WriteLine(s);
+        s = string.Empty;
     }
 }
 
+void FormatPrintIntArray2d(int[,] array2d) //Форматный вывод на экран двумерного вещественного массива
+{
+    string s = string.Empty;
+    for (int i = 0; i < array2d.GetLength(0); i++)
+    {
+        for (int j = 0; j < array2d.GetLength(1); j++)
+        {
+            s += String.Format("{0,5}", array2d[i, j]);
+        }
+        Console.WriteLine(s);
+        s = string.Empty;
+    }
+}
 
 Console.Write("Input size m ");
 int row = Convert.ToInt32(Console.ReadLine());
@@ -512,8 +533,41 @@ int min = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input max number ");
 int max = Convert.ToInt32(Console.ReadLine());
 
-double [,] mainArray2d = CreateRandomArray2d(row,col,min,max);
-FormatPrintArray2d(mainArray2d);
+/* double[,] mainArray2d = CreateRandomArray2d(row, col, min, max);
+PrintArray2d(mainArray2d);
+Console.WriteLine();
+FormatPrintDoubleArray2d(mainArray2d); */
+
+/* ______________________________________________________________________________________
+Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
+Например, задан массив:
+1 4 7 2
+5 9 2 3
+8 4 2 4
+1 7 -> числа с такими индексами в массиве нет */
+
+int SearchElement(int [,] array, int row, int col, int maxValue)// Поиск элемента array[row,col] в массиве
+{
+    if (row > array.GetLength(0) || col > array.GetLength(1))
+        return maxValue+1;
+    else 
+        return array[row, col];
+}
+
+int[,] mainArray2d = CreateRandomIntArray2d(row, col, min, max);
+FormatPrintIntArray2d(mainArray2d);
+Console.WriteLine("Input SearcRow ");
+int searchRow = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input SearcCol ");
+int searchCol = Convert.ToInt32(Console.ReadLine());
+int search = SearchElement(mainArray2d, searchRow,searchCol, max);
+if (search == max + 1)
+    Console.WriteLine("There is no such element");
+else
+    Console.WriteLine(search);
+
+
+
 
 
 
