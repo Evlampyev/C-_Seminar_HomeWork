@@ -281,30 +281,30 @@ ________________________________________________________________________________
 которая покажет количество чётных чисел в массиве.
 [345, 897, 568, 234] -> 2 */
 
-int[] СreatRandomArray (int size, int minValue, int maxValue)
+int[] СreatRandomArray(int size, int minValue, int maxValue)
 {
     int[] array = new int[size];
-    for (int i = 0; i < size; i++) 
+    for (int i = 0; i < size; i++)
     {
-        array[i] = new Random().Next(minValue,maxValue);
+        array[i] = new Random().Next(minValue, maxValue);
     }
     return array;
 }
 
-void Print (int [] array)
+void Print(int[] array)
 {
-    for (int i = 0; i< array.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
         Console.Write(array[i] + " ");
     }
 }
 
-int SearchEvenNumbers (int [] array)
+int SearchEvenNumbers(int[] array)
 {
     int current = 0;
-    for (int i =0; i < array.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
-        if (array[i] %2 == 0) 
+        if (array[i] % 2 == 0)
         {
             current++;
         }
@@ -354,7 +354,7 @@ ________________________________________________________________________________
  Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
 [3 7 22 2 78] -> 76 */
 
-double[] CreatRandomDoubleArray (int size, int minValue, int maxValue)
+double[] CreatRandomDoubleArray(int size, int minValue, int maxValue)
 {
     double[] array = new double[size];
     for (int i = 0; i < size; i++)
@@ -364,7 +364,7 @@ double[] CreatRandomDoubleArray (int size, int minValue, int maxValue)
     return array;
 }
 
-void PrintDouble (double[] array)
+void PrintDouble(double[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -372,26 +372,26 @@ void PrintDouble (double[] array)
     }
 }
 
-double MaxElementArray (double [] array)
+double MaxElementArray(double[] array)
 {
     double max = array[0];
     for (int i = 1; i < array.Length; i++)
     {
         if (array[i] > max)
             max = array[i];
-    }    
-return max;
+    }
+    return max;
 }
 
-double MinElementArray (double[] array)
+double MinElementArray(double[] array)
 {
     double min = array[0];
     for (int i = 1; i < array.Length; i++)
     {
         if (array[i] < min)
             min = array[i];
-    }    
-return min;
+    }
+    return min;
 }
 
 /* ouble[] MainArray = CreatRandomDoubleArray (s, LowLevel, HiLevel);
@@ -411,15 +411,15 @@ ________________________________________________________________________________
 0, 7, 8, -2, -2 -> 2
 1, -7, 567, 89, 223-> 3 */
 
-int HoWManyPositiveNumber (int k) //Количество положительных чисел из k вводимых с клавиатуры
+int HoWManyPositiveNumber(int k) //Количество положительных чисел из k вводимых с клавиатуры
 {
     int current = 0;
     Console.WriteLine($"Input {k} Numbers: ");
     while (k > 0)
     {
-        int num = Convert.ToInt32 (Console.ReadLine());
+        int num = Convert.ToInt32(Console.ReadLine());
         k--;
-        if (num > 0) 
+        if (num > 0)
             current++;
     }
     return current;
@@ -434,13 +434,13 @@ ________________________________________________________________________________
 уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
 b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
 */
-double IntersectionPoint (double k1, double b1, double k2, double b2) // Нахождение координаты X пересечения двух прямых
+double IntersectionPoint(double k1, double b1, double k2, double b2) // Нахождение координаты X пересечения двух прямых
 {
-    return (b2-b1)/(k1-k2);
-    
+    return (b2 - b1) / (k1 - k2);
+
 }
 
-Console.Write("Input k1 ");
+/* Console.Write("Input k1 ");
 double K1 = Convert.ToDouble(Console.ReadLine());
 Console.Write("Input b1 ");
 double B1 = Convert.ToDouble(Console.ReadLine());
@@ -451,4 +451,69 @@ double B2 = Convert.ToDouble(Console.ReadLine());
 
 double x = IntersectionPoint(K1, B1, K2, B2);
 double y = K1 * x + B1;
-Console.WriteLine($"Intersection point x = {x} y = {y}");
+Console.WriteLine($"Intersection point x = {x} y = {y}"); 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Семинар №7 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+______________________________________________________________________________________
+Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+m = 3, n = 4.
+0,5 7 -2 -0,2
+1 -3,3 8 -9,9
+8 7,8 -7,1 9
+*/
+
+double [,] CreateRandomArray2d (int m, int n, int minValue, int maxValue) //заполнение массива mxn вещественными числами
+{
+    double [,] array2d = new double [m,n];
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            double temp = (new Random().NextDouble()) + (new Random().Next(minValue,maxValue));
+            array2d[i,j] = Math.Round(temp,1);
+        }
+    }
+    return array2d;
+}
+
+void PrintArray2d (double [,] array2d) // Вывод на экран двумерного вещественного массива
+{
+     for (int i = 0; i < array2d.GetLength(0); i++)
+    {
+        for (int j = 0; j < array2d.GetLength(1); j++)
+        {
+            Console.Write(array2d[i,j] + " ");
+        }   
+    Console.WriteLine();
+    }
+}
+
+void FormatPrintArray2d(double [,] array2d) //Форматный вывод на экран двумерного массива
+{
+    string s = string.Empty;
+     for (int i = 0; i < array2d.GetLength(0); i++)
+    {
+        for (int j = 0; j < array2d.GetLength(1); j++)
+        {
+            s += String.Format("{0,5}", array2d[i,j]);
+        }   
+    Console.WriteLine(s);
+    s = string.Empty;
+    }
+}
+
+
+Console.Write("Input size m ");
+int row = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input size n ");
+int col = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input min number ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input max number ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+double [,] mainArray2d = CreateRandomArray2d(row,col,min,max);
+FormatPrintArray2d(mainArray2d);
+
+
+
