@@ -546,15 +546,15 @@ FormatPrintDoubleArray2d(mainArray2d); */
 8 4 2 4
 1 7 -> числа с такими индексами в массиве нет */
 
-int SearchElement(int [,] array, int row, int col, int maxValue)// Поиск элемента array[row,col] в массиве
+int SearchElement(int[,] array, int row, int col, int maxValue)// Поиск элемента array[row,col] в массиве
 {
     if (row > array.GetLength(0) || col > array.GetLength(1))
-        return maxValue+1;
-    else 
+        return maxValue + 1;
+    else
         return array[row, col];
 }
 
-int[,] mainArray2d = CreateRandomIntArray2d(row, col, min, max);
+/* int[,] mainArray2d = CreateRandomIntArray2d(row, col, min, max);
 FormatPrintIntArray2d(mainArray2d);
 Console.WriteLine("Input SearcRow ");
 int searchRow = Convert.ToInt32(Console.ReadLine());
@@ -566,8 +566,32 @@ if (search == max + 1)
 else
     Console.WriteLine(search);
 
+______________________________________________________________________________________
+Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+Например, задан массив:
+1 4 7 2
+5 9 2 3
+8 4 2 4
+Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3. */
 
+void ArithmeticMeanColumn(int[,] array) //Поиск среднего арифметического в столбце
+{
+    Console.Write("Arithmetic Mean of each Column: ");
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+        double temp = 0;
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            temp += array[i, j];
+        }
+        temp = Math.Round(temp / array.GetLength(0), 1);
+        Console.Write(temp + "; ");
+    }
+}
 
+int[,] mainArray2d = CreateRandomIntArray2d(row, col, min, max);
+FormatPrintIntArray2d(mainArray2d);
+ArithmeticMeanColumn(mainArray2d);
 
 
 
