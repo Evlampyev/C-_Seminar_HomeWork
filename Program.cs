@@ -259,7 +259,7 @@ ________________________________________________________________________________
 
 }
 
-void PrintArray(int [] massiv)
+void PrintIntArrayArray(int [] massiv)
 {
     Console.Write("Еhe entire array: ");
     for (int i = 0; i<massiv.Length; i++)
@@ -272,7 +272,7 @@ Console.Write("Enter the size of the array ");
 int arraySize = Convert.ToInt32(Console.ReadLine());
 
 int[] mainArray = InputArray(arraySize);
-PrintArray(mainArray); 
+PrintIntArrayArray(mainArray); 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Семинар №5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ______________________________________________________________________________________
@@ -291,7 +291,7 @@ int[] СreatRandomArray(int size, int minValue, int maxValue)
     return array;
 }
 
-void Print(int[] array)
+void PrintIntArray(int[] array) // Вывод целого массива в троку
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -320,7 +320,7 @@ Console.Write("Input HiLevel ");
 int HiLevel = Convert.ToInt32(Console.ReadLine()); */
 
 /* int[] MainArray = СreatRandomArray(s, LowLevel, HiLevel);
-Print (MainArray);
+PrintIntArray (MainArray);
 Console.WriteLine ();
 Console.WriteLine("Even array elements " + SearchEvenNumbers(MainArray));
 
@@ -344,7 +344,7 @@ int NotSearchEvenIndex (int [] array)
 
 
 int[] MainArray = СreatRandomArray(s, LowLevel, HiLevel);
-Print (MainArray);
+PrintIntArray (MainArray);
 Console.WriteLine ();
 
 Console.WriteLine ("Elements found in even places " + SearchEvenIndex(MainArray));
@@ -353,6 +353,7 @@ Console.WriteLine ("Сalculated elements in even places " + NotSearchEvenIndex(M
 ______________________________________________________________________________________
  Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
 [3 7 22 2 78] -> 76 */
+
 
 double[] CreatRandomDoubleArray(int size, int minValue, int maxValue)
 {
@@ -364,7 +365,7 @@ double[] CreatRandomDoubleArray(int size, int minValue, int maxValue)
     return array;
 }
 
-void PrintDouble(double[] array)
+void PrintDoubleArray(double[] array) // Вывод на экран вещественного массива в одну строку
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -395,7 +396,7 @@ double MinElementArray(double[] array)
 }
 
 /* ouble[] MainArray = CreatRandomDoubleArray (s, LowLevel, HiLevel);
-PrintDouble (MainArray);
+PrintDoubleArray (MainArray);
 Console.WriteLine ();
 double Max = MaxElementArray(MainArray);
 double Min =  MinElementArray(MainArray);
@@ -484,7 +485,7 @@ double[,] CreateRandomArray2d(int m, int n, int minValue, int maxValue) //зап
     return array2d;
 }
 
-void PrintArray2d(double[,] array2d) // Вывод на экран двумерного вещественного массива
+void PrintIntArrayArray2d(double[,] array2d) // Вывод на экран двумерного вещественного массива
 {
     for (int i = 0; i < array2d.GetLength(0); i++)
     {
@@ -496,7 +497,7 @@ void PrintArray2d(double[,] array2d) // Вывод на экран двумер�
     }
 }
 
-void FormatPrintDoubleArray2d(double[,] array2d) //Форматный вывод на экран двумерного вещественного массива
+void FormatPrintDoubleArrayArray2d(double[,] array2d) //Форматный вывод на экран двумерного вещественного массива
 {
     string s = string.Empty;
     for (int i = 0; i < array2d.GetLength(0); i++)
@@ -510,7 +511,7 @@ void FormatPrintDoubleArray2d(double[,] array2d) //Форматный вывод
     }
 }
 
-void FormatPrintIntArray2d(int[,] array2d) //Форматный вывод на экран двумерного вещественного массива
+void FormatPrintIntArrayIntArray2d(int[,] array2d) //Форматный вывод на экран двумерного вещественного массива
 {
     string s = string.Empty;
     for (int i = 0; i < array2d.GetLength(0); i++)
@@ -534,9 +535,9 @@ Console.Write("Input max number ");
 int max = Convert.ToInt32(Console.ReadLine());
 
 /* double[,] mainArray2d = CreateRandomArray2d(row, col, min, max);
-PrintArray2d(mainArray2d);
+PrintIntArrayArray2d(mainArray2d);
 Console.WriteLine();
-FormatPrintDoubleArray2d(mainArray2d); */
+FormatPrintDoubleArrayArray2d(mainArray2d); */
 
 /* ______________________________________________________________________________________
 Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
@@ -555,7 +556,7 @@ int SearchElement(int[,] array, int row, int col, int maxValue)// Поиск э�
 }
 
 /* int[,] mainArray2d = CreateRandomIntArray2d(row, col, min, max);
-FormatPrintIntArray2d(mainArray2d);
+FormatPrintIntArrayIntArray2d(mainArray2d);
 Console.WriteLine("Input SearcRow ");
 int searchRow = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Input SearcCol ");
@@ -589,9 +590,10 @@ void ArithmeticMeanColumn(int[,] array) //Поиск среднего арифм
     }
 }
 
-int[,] mainArray2d = CreateRandomIntArray2d(row, col, min, max);
-FormatPrintIntArray2d(mainArray2d);
+/* int[,] mainArray2d = CreateRandomIntArray2d(row, col, min, max);
+FormatPrintIntArrayIntArray2d(mainArray2d);
 ArithmeticMeanColumn(mainArray2d);
 
-
-
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Семинар №8 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+______________________________________________________________________________________ */
+ */
