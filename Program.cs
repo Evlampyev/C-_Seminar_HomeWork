@@ -525,14 +525,14 @@ void FormatPrintIntArrayIntArray2d(int[,] array2d) //Форматный выво
     }
 }
 
-/* Console.Write("Input size m ");
+Console.Write("Input size m ");
 int row = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input size n ");
 int col = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input min number ");
 int minV = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input max number ");
-int maxV = Convert.ToInt32(Console.ReadLine()); */
+int maxV = Convert.ToInt32(Console.ReadLine());
 
 /* double[,] mainArray2d = CreateRandomArray2d(row, col, minV, maxV);
 PrintIntArrayArray2d(mainArray2d);
@@ -608,7 +608,7 @@ ________________________________________________________________________________
 
 void GetSortedArray(int[,] array) //Сортировка строк массива по убыванию
 {
-    int [] minIndex = new int[2];
+    int[] minIndex = new int[2];
     int temp;
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -616,20 +616,52 @@ void GetSortedArray(int[,] array) //Сортировка строк массив
         {
             for (int j = 1; j < array.GetLength(1); j++)
             {
-                if (array[i,j-1] < array[i,j])
-                   {
-                    temp = array[i,j];
-                    array[i,j] = array[i, j-1];
-                    array[i,j-1] = temp;
-                    }
+                if (array[i, j - 1] < array[i, j])
+                {
+                    temp = array[i, j];
+                    array[i, j] = array[i, j - 1];
+                    array[i, j - 1] = temp;
+                }
             }
         }
     }
 }
-int[,] mainArray = CreateRandomIntArray2d(4, 7, 1, 99);
+
+int[,] mainArray = CreateRandomIntArray2d(row, col, minV, maxV);
 FormatPrintIntArrayIntArray2d(mainArray);
-GetSortedArray(mainArray);
+/* GetSortedArray(mainArray);
 Console.WriteLine();
-FormatPrintIntArrayIntArray2d(mainArray);
+FormatPrintIntArrayIntArray2d(mainArray); */
 
+/*
+______________________________________________________________________________________ 
+Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+Например, задан массив:
+1 4 7 2
+5 9 2 3
+8 4 2 4
+5 2 6 7
+Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка */
 
+int GetMinLineSum(int[,] array, int minSum) //Поиск номера строки с минимальной суммой элементов
+{
+    int sum;
+    int line = -1;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        sum = 0;
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            sum += array[i, j];
+        }
+        if (sum < minSum) 
+        {
+            minSum = sum;
+            line = i;
+        }
+    }
+    return line;
+}
+
+int minLineSum = GetMinLineSum(mainArray, maxV * col);
+Console.WriteLine($"Line with min sum is {minLineSum + 1}");
