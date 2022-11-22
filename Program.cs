@@ -511,7 +511,7 @@ void FormatPrintDoubleArrayArray2d(double[,] array2d) //Форматный вы�
     }
 }
 
-void FormatPrintIntArrayIntArray2d(int[,] array2d) //Форматный вывод на экран двумерного вещественного массива
+void FormatPrintIntArrayIntArray2d(int[,] array2d) //Форматный вывод на экран двумерного целого массива
 {
     string s = string.Empty;
     for (int i = 0; i < array2d.GetLength(0); i++)
@@ -525,16 +525,16 @@ void FormatPrintIntArrayIntArray2d(int[,] array2d) //Форматный выво
     }
 }
 
-Console.Write("Input size m ");
+/* Console.Write("Input size m ");
 int row = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input size n ");
 int col = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input min number ");
-int min = Convert.ToInt32(Console.ReadLine());
+int minV = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input max number ");
-int max = Convert.ToInt32(Console.ReadLine());
+int maxV = Convert.ToInt32(Console.ReadLine()); */
 
-/* double[,] mainArray2d = CreateRandomArray2d(row, col, min, max);
+/* double[,] mainArray2d = CreateRandomArray2d(row, col, minV, maxV);
 PrintIntArrayArray2d(mainArray2d);
 Console.WriteLine();
 FormatPrintDoubleArrayArray2d(mainArray2d); */
@@ -561,7 +561,7 @@ Console.WriteLine("Input SearcRow ");
 int searchRow = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Input SearcCol ");
 int searchCol = Convert.ToInt32(Console.ReadLine());
-int search = SearchElement(mainArray2d, searchRow,searchCol, max);
+int search = SearchElement(mainArray2d, searchRow,searchCol, maxV);
 if (search == max + 1)
     Console.WriteLine("There is no such element");
 else
@@ -595,5 +595,41 @@ FormatPrintIntArrayIntArray2d(mainArray2d);
 ArithmeticMeanColumn(mainArray2d);
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Семинар №8 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-______________________________________________________________________________________ */
- */
+______________________________________________________________________________________ 
+ Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
+Например, задан массив:
+1 4 7 2
+5 9 2 3
+8 4 2 4
+В итоге получается вот такой массив:
+7 4 2 1
+9 5 3 2
+8 4 4 2*/
+
+void GetSortedArray(int[,] array) //Сортировка строк массива по убыванию
+{
+    int [] minIndex = new int[2];
+    int temp;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int count = array.GetLength(1); count > 1; count--)
+        {
+            for (int j = 1; j < array.GetLength(1); j++)
+            {
+                if (array[i,j-1] < array[i,j])
+                   {
+                    temp = array[i,j];
+                    array[i,j] = array[i, j-1];
+                    array[i,j-1] = temp;
+                    }
+            }
+        }
+    }
+}
+int[,] mainArray = CreateRandomIntArray2d(4, 7, 1, 99);
+FormatPrintIntArrayIntArray2d(mainArray);
+GetSortedArray(mainArray);
+Console.WriteLine();
+FormatPrintIntArrayIntArray2d(mainArray);
+
+
