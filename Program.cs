@@ -676,7 +676,7 @@ ________________________________________________________________________________
 18 20
 15 18 */
 
-int[,] GetCompositionMatrix(int[,] array1, int[,] array2)
+int[,] GetCompositionMatrix(int[,] array1, int[,] array2) // Слов нет, но она умножает матрицы
 {
     int m = array1.GetLength(0);
     int n = array2.GetLength(1);
