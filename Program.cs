@@ -525,14 +525,16 @@ void FormatPrintIntArrayIntArray2d(int[,] array2d) //Форматный выво
     }
 }
 
-Console.Write("Input size m ");
+
+///****
+/* Console.Write("Input size m ");
 int row = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input size n ");
 int col = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input min number ");
 int minV = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input max number ");
-int maxV = Convert.ToInt32(Console.ReadLine());
+int maxV = Convert.ToInt32(Console.ReadLine()); */
 
 /* double[,] mainArray2d = CreateRandomArray2d(row, col, minV, maxV);
 PrintIntArrayArray2d(mainArray2d);
@@ -627,8 +629,8 @@ void GetSortedArray(int[,] array) //Сортировка строк массив
     }
 }
 
-int[,] mainArray = CreateRandomIntArray2d(row, col, minV, maxV);
-FormatPrintIntArrayIntArray2d(mainArray);
+/* int[,] mainArray = CreateRandomIntArray2d(row, col, minV, maxV);
+FormatPrintIntArrayIntArray2d(mainArray); */
 /* GetSortedArray(mainArray);
 Console.WriteLine();
 FormatPrintIntArrayIntArray2d(mainArray); */
@@ -654,7 +656,7 @@ int GetMinLineSum(int[,] array, int minSum) //Поиск номера строк
         {
             sum += array[i, j];
         }
-        if (sum < minSum) 
+        if (sum < minSum)
         {
             minSum = sum;
             line = i;
@@ -663,5 +665,70 @@ int GetMinLineSum(int[,] array, int minSum) //Поиск номера строк
     return line;
 }
 
-int minLineSum = GetMinLineSum(mainArray, maxV * col);
+/* int minLineSum = GetMinLineSum(mainArray, maxV * col);
 Console.WriteLine($"Line with min sum is {minLineSum + 1}");
+______________________________________________________________________________________ 
+Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+Например, даны 2 матрицы:
+2 4 | 3 4
+3 2 | 3 3
+Результирующая матрица будет:
+18 20
+15 18 */
+
+int[,] GetCompositionMatrix(int[,] array1, int[,] array2)
+{
+    int m = array1.GetLength(0);
+    int n = array2.GetLength(1);
+    int k = array1.GetLength(1);
+    //первый массив m x k
+    //второй массив k x n    
+    int[,] compMat = new int[m, n];
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            for (int s = 0; s < k; s++)
+            {
+                compMat[i, j] += array1[i, s] * array2[s, j];
+            }
+        }
+    }
+    return compMat;
+}
+
+Console.Write("Input size m1 ");
+int row = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input size n1 ");
+int col = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input min number ");
+int minV = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input max number ");
+int maxV = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Input size m2 ");
+int row2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input size n2 ");
+int col2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input min number ");
+int minV2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input max number ");
+int maxV2 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("First Matrix:");
+int[,] mainArray = CreateRandomIntArray2d(row, col, minV, maxV);
+FormatPrintIntArrayIntArray2d(mainArray);
+
+Console.WriteLine("Second Matrix:");
+int[,] mainArray2 = CreateRandomIntArray2d(row2, col2, minV2, maxV2);
+FormatPrintIntArrayIntArray2d(mainArray2);
+
+if (col != row2)
+    Console.WriteLine("Composition of matrix is impossible");
+else
+{
+    Console.WriteLine("Composition matrix: ");
+    int[,] compositionMatrix = GetCompositionMatrix(mainArray, mainArray2);
+    FormatPrintIntArrayIntArray2d(compositionMatrix);
+}
+
