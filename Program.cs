@@ -291,13 +291,13 @@ int[] СreatRandomArray(int size, int minValue, int maxValue)
     return array;
 }
 
-void PrintIntArray(int[] array) // Вывод целого массива в троку
+/* void PrintIntArray(int[] array) // Вывод целого массива в троку
 {
     for (int i = 0; i < array.Length; i++)
     {
         Console.Write(array[i] + " ");
     }
-}
+} */
 
 int SearchEvenNumbers(int[] array)
 {
@@ -739,38 +739,53 @@ ________________________________________________________________________________
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)*/
 
+void PrintIntArray(int[] array) // Вывод целого массива в троку
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+}
 
-int [] CreateSetOgNumber(int row, int col, int floor) // Создаёт набор различных двухзначных чисел
+int[] CreateSetOfNumber(int row, int col, int floor) // Создаёт набор различных двухзначных чисел
 {
     int length = row * col * floor;
     int count = 0;
     int[] array = new int[length];
     int temp;
-    bool availability = true;
     while (count != length)
     {
+        bool availability = true;
         temp = new Random().Next(10, 100);
-
         for (int i = 0; i <= count; i++)
         {
             if (array[i] == temp) availability = false;
         }
-        if (availability) 
+        if (availability)
         {
             array[count] = temp;
-            count ++;
+            count++;
         }
-
     }
     return array;
 }
 
 
-/* int[,,] CreateIntArray3D(int row, int col, int floor)
+int[,,] CreateIntArray3D(int row, int col, int floor, int[] lArray)
 {
     int[,,] array3d = new int[row, col, floor];
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            for (int k = 0; k < floor; k++)
+            {
+                
+            }
+        }
+    }
 }
- */
-int [] litleArray = CreateSetOgNumber(3,3,3);
+
+int[] litleArray = CreateSetOfNumber(3, 3, 3);
 
 PrintIntArray(litleArray);
