@@ -770,22 +770,41 @@ int[] CreateSetOfNumber(int row, int col, int floor) // Создаёт набо�
     return array;
 }
 
-
-int[,,] CreateIntArray3D(int row, int col, int floor, int[] lArray)
+int[,,] CreateIntArray3D(int row, int col, int floor, int[] lArray) // Заполнение массива 3D числами из линейного массива и вывод
 {
     int[,,] array3d = new int[row, col, floor];
-    for (int i = 0; i < row; i++)
+    int count = 0;
+    string s = String.Empty;
+    for (int k = 0; k < floor; k++)
     {
-        for (int j = 0; j < col; j++)
+        for (int i = 0; i < row; i++)
         {
-            for (int k = 0; k < floor; k++)
+            for (int j = 0; j < col; j++)
             {
-                
+                array3d[i, j, k] = lArray[count];
+                count++;
+                s += String.Format("{0,4}", array3d[i, j, k]) + String.Format("{0,3}", $"({i}, {j}, {k})");
+            
             }
+            Console.WriteLine(s);
+            s = string.Empty;
         }
+        Console.WriteLine();
     }
+    return array3d;
 }
 
-int[] litleArray = CreateSetOfNumber(3, 3, 3);
 
+Console.Write("Input size m ");
+int row3d = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input size n ");
+int col3d = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input size k ");
+int floor3d = Convert.ToInt32(Console.ReadLine());
+Console.Write($"{row3d * col3d * floor3d} random number: ");
+
+int[] litleArray = CreateSetOfNumber(row3d, col3d, floor3d);
 PrintIntArray(litleArray);
+Console.WriteLine();
+Console.WriteLine("3D MAtrix:");
+int[,,] array3D = CreateIntArray3D(row3d, col3d,floor3d, litleArray);
