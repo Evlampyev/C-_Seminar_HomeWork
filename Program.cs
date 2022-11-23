@@ -697,7 +697,7 @@ int[,] GetCompositionMatrix(int[,] array1, int[,] array2) // Слов нет, н
     return compMat;
 }
 
-Console.Write("Input size m1 ");
+/* Console.Write("Input size m1 ");
 int row = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input size n1 ");
 int col = Convert.ToInt32(Console.ReadLine());
@@ -730,5 +730,47 @@ else
     Console.WriteLine("Composition matrix: ");
     int[,] compositionMatrix = GetCompositionMatrix(mainArray, mainArray2);
     FormatPrintIntArrayIntArray2d(compositionMatrix);
+} 
+______________________________________________________________________________________ 
+Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+Массив размером 2 x 2 x 2
+66(0,0,0) 25(0,1,0)
+34(1,0,0) 41(1,1,0)
+27(0,0,1) 90(0,1,1)
+26(1,0,1) 55(1,1,1)*/
+
+
+int [] CreateSetOgNumber(int row, int col, int floor) // Создаёт набор различных двухзначных чисел
+{
+    int length = row * col * floor;
+    int count = 0;
+    int[] array = new int[length];
+    int temp;
+    bool availability = true;
+    while (count != length)
+    {
+        temp = new Random().Next(10, 100);
+
+        for (int i = 0; i <= count; i++)
+        {
+            if (array[i] == temp) availability = false;
+        }
+        if (availability) 
+        {
+            array[count] = temp;
+            count ++;
+        }
+
+    }
+    return array;
 }
 
+
+/* int[,,] CreateIntArray3D(int row, int col, int floor)
+{
+    int[,,] array3d = new int[row, col, floor];
+}
+ */
+int [] litleArray = CreateSetOgNumber(3,3,3);
+
+PrintIntArray(litleArray);
