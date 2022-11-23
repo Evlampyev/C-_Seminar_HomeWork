@@ -739,7 +739,7 @@ ________________________________________________________________________________
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)*/
 
-void PrintIntArray(int[] array) // Вывод целого массива в троку
+void PrintIntArray(int[] array) // Вывод целого массива в cтроку
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -784,7 +784,7 @@ int[,,] CreateIntArray3D(int row, int col, int floor, int[] lArray) // Запо�
                 array3d[i, j, k] = lArray[count];
                 count++;
                 s += String.Format("{0,4}", array3d[i, j, k]) + String.Format("{0,3}", $"({i}, {j}, {k})");
-            
+
             }
             Console.WriteLine(s);
             s = string.Empty;
@@ -795,7 +795,7 @@ int[,,] CreateIntArray3D(int row, int col, int floor, int[] lArray) // Запо�
 }
 
 
-Console.Write("Input size m ");
+/* Console.Write("Input size m ");
 int row3d = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input size n ");
 int col3d = Convert.ToInt32(Console.ReadLine());
@@ -808,3 +808,73 @@ PrintIntArray(litleArray);
 Console.WriteLine();
 Console.WriteLine("3D MAtrix:");
 int[,,] array3D = CreateIntArray3D(row3d, col3d,floor3d, litleArray);
+
+______________________________________________________________________________________ 
+Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+Например, на выходе получается вот такой массив:
+01 02 03 04
+12 13 14 05
+11 16 15 06
+10 09 08 07 */
+void FormatPrintStringArray2d(string[,] array2d) //Форматный вывод на экран двумерного string массива
+{
+    string s = string.Empty;
+    for (int i = 0; i < array2d.GetLength(0); i++)
+    {
+        for (int j = 0; j < array2d.GetLength(1); j++)
+        {
+            s += String.Format("{0,5}", array2d[i, j]);
+        }
+        Console.WriteLine(s);
+        s = string.Empty;
+    }
+}
+
+int HowManyDigitNumber(int num) // подсчет количества цифр в числе
+{
+    int res = 0;
+    while (num > 0)
+    {
+        num = num / 10;
+        res++;
+    }
+    return res;
+}
+
+void FillArray(string[,] array)
+{
+    int len = array.GetLength(0);
+    int current = 1; //Текущее число, которое вписываем в матрицу
+    int i = 0;//текущие координаты точки // up
+    int j = 0;// right
+    for (j = 0; j < len; j++)
+    {
+        array[i, j] = new String('0', HowManyDigitNumber(len * len) - HowManyDigitNumber(current)) + current.ToString();
+        current++;
+    }
+    j--;
+    int count = len - 1; //сколько шагов идти
+    int[,] upRight = { { 1, 0 }, { 0, -1 }, { -1, 0 }, { 0, 1 } };
+    int direction = 0;
+    int temp = 0;
+    while (current <= len * len)
+    {
+        for (int z = 0; z < count - temp / 2; z++)
+        {
+            i = i + upRight[direction, 0]; j = j + upRight[direction, 1];
+
+            array[i, j] = new String('0', HowManyDigitNumber(len * len) - HowManyDigitNumber(current)) + current.ToString();
+            current++;
+        }
+        direction++;
+        temp++;
+        direction = direction % 4;
+    }
+}
+
+
+Console.Write("input matrix size: ");
+int size = Convert.ToInt32(Console.ReadLine());
+string[,] mainArray = new string[size, size];
+FillArray(mainArray);
+FormatPrintStringArray2d(mainArray);
